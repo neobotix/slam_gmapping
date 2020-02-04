@@ -567,7 +567,7 @@ SlamGMapping::addScan(const sensor_msgs::LaserScan& scan, GMapping::OrientedPoin
     {
       // Must filter out short readings, because the mapper won't
       if(scan.ranges[num_ranges - i - 1] < scan.range_min)
-        ranges_double[i] = (double)scan.range_max;
+        ranges_double[i] = std::numeric_limits<double>::infinity();
       else
         ranges_double[i] = (double)scan.ranges[num_ranges - i - 1];
     }
