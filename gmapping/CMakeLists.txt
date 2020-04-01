@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project(gmapping)
 
+## By default build with code optimization and no debug info
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "Release"
+  	  CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel."
+      FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
+
 find_package(catkin REQUIRED nav_msgs nodelet openslam_gmapping roscpp tf rosbag_storage)
 
 find_package(Boost REQUIRED)
